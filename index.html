@@ -283,7 +283,7 @@ tekst+
 "</div>";
 
 
-
+</style>
 document.querySelectorAll(".produkt span").forEach(e=>{
 
 e.innerText="0";
@@ -296,7 +296,10 @@ document.getElementById("rabat").value="0";
 policzSume();
 
 }
-</style>
+
+window.onload = function () {
+    policzSume();
+};
     <script>
 
 function zmienIlosc(id, zmiana){
@@ -630,10 +633,6 @@ Brak produktów
 
 
 <div id="paragon"></div>
-    
-window.onload = function () {
-    policzSume();
-};
 
 </div>
 </div>  
