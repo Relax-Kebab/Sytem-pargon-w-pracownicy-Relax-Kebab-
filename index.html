@@ -5,11 +5,42 @@
 <meta name="google" content="notranslate">
 <title>RELAX KEBAB - System Paragonów</title>
 <style>
-body function zmienIlosc(id, zmiana){
 
 let pole=document.getElementById(id);
 let ilosc=Number(pole.innerText)+zmiana;
+.produkty{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
 
+
+.produkt{
+    width:220px;
+    min-height:230px;
+}
+
+
+.produkt button{
+
+    width:60px;
+    height:60px;
+    font-size:30px;
+    border-radius:50%;
+
+}
+
+
+.produkt span{
+
+    font-size:32px;
+    font-weight:bold;
+    min-width:50px;
+
+}
 if(ilosc<0) ilosc=0;
 
 pole.innerText=ilosc;
@@ -115,6 +146,141 @@ policzSume();
 
 }
 </style>
+    <script>
+
+function zmienIlosc(id, zmiana){
+
+    let pole = document.getElementById(id);
+
+    let ilosc = parseInt(pole.innerText);
+
+    ilosc += zmiana;
+
+    if(ilosc < 0){
+        ilosc = 0;
+    }
+
+    pole.innerText = ilosc;
+
+    policzSume();
+}
+
+
+
+function policzSume(){
+
+    let suma = 0;
+
+    document.querySelectorAll(".produkt").forEach(function(el){
+
+        let ilosc = Number(el.querySelector("span").innerText);
+        let cena = Number(el.dataset.price);
+
+        suma += ilosc * cena;
+
+    });
+
+
+    let rabat = Number(document.getElementById("rabat").value);
+
+    let cenaPoRabacie = suma - (suma * rabat / 100);
+
+
+    document.getElementById("sumaKoszyka").innerHTML =
+
+    "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
+    "🎁 Rabat: " + rabat + "%<br>" +
+    "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
+
+}
+
+
+
+function wystawParagon(){
+
+    let produkty = "";
+    let suma = 0;
+
+
+    document.querySelectorAll(".produkt").forEach(function(el){
+
+        let ilosc = Number(el.querySelector("span").innerText);
+
+        if(ilosc > 0){
+
+            let cena = Number(el.dataset.price);
+
+            produkty += "🍽️ " + el.dataset.name +
+            " x" + ilosc + "<br>";
+
+            suma += cena * ilosc;
+        }
+
+    });
+
+
+    if(produkty === ""){
+
+        alert("Dodaj produkty!");
+        return;
+
+    }
+
+
+    let rabat = Number(document.getElementById("rabat").value);
+
+    let poRabacie = suma - (suma*rabat/100);
+
+
+
+    document.getElementById("paragon").innerHTML =
+
+    `
+    <div class="paragon">
+
+    <h3>🌯 RELAX KEBAB</h3>
+
+    ${produkty}
+
+    <hr>
+
+    💰 Przed rabatem:
+    ${suma.toFixed(2)} zł
+
+    <br>
+
+    🎁 Rabat:
+    ${rabat}%
+
+    <br>
+
+    ✅ Do zapłaty:
+    ${poRabacie.toFixed(2)} zł
+
+    <br><br>
+
+    📅 ${new Date().toLocaleString("pl-PL")}
+
+    </div>
+    `;
+
+
+
+    document.querySelectorAll(".produkt span").forEach(function(e){
+
+        e.innerText="0";
+
+    });
+
+
+    document.getElementById("rabat").value="0";
+
+    policzSume();
+
+}
+
+
+</script>
 </head>
 <body>
 
