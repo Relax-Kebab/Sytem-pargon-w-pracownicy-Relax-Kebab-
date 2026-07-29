@@ -157,27 +157,28 @@ function policzSume(){
         let cena = Number(el.dataset.price);
 
         if(ilosc > 0){
-
             suma += ilosc * cena;
 
             lista +=
-                "🍽️ " +
-                el.dataset.name +
-                " x" +
-                ilosc +
-                " — " +
-                (ilosc * cena).toFixed(2) +
-                " zł<br>";
+            "🍽️ " +
+            el.dataset.name +
+            " x" +
+            ilosc +
+            " — " +
+            (ilosc * cena).toFixed(2) +
+            " zł<br>";
         }
 
     });
-        if(lista == ""){
+
+
+    if(lista == ""){
         lista = "Brak produktów";
     }
 
+
     document.getElementById("podsumowanie").innerHTML =
-        "<b>🍽️ Twoje zamówienie:</b><br><br>" +
-        lista;
+    "<b>🍽️ Twoje zamówienie:</b><br><br>" + lista;
 
 
     let rabat = Number(document.getElementById("rabat").value);
@@ -186,11 +187,12 @@ function policzSume(){
 
 
     document.getElementById("sumaKoszyka").innerHTML =
-        "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
-        "🎁 Rabat: " + rabat + "%<br>" +
-        "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
+    "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
+    "🎁 Rabat: " + rabat + "%<br>" +
+    "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
 
 }
+
 function wystawParagon(){
 
     let produkty = "";
