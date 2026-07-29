@@ -6,8 +6,6 @@
 <title>RELAX KEBAB - System Paragonów</title>
 <style>
 
-let pole=document.getElementById(id);
-let ilosc=Number(pole.innerText)+zmiana;
 body {
     margin:0;
     font-family:Arial,sans-serif;
@@ -463,7 +461,10 @@ function wystawParagon(){
 
 }
 
-
+window.onload = function () {
+    policzSume();
+};
+        
 </script>
 </head>
 <body>
