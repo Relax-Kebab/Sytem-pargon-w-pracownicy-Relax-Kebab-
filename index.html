@@ -126,6 +126,19 @@ select{
     text-align:left;
     box-shadow:0 3px 10px #000;
 }
+   #sumaKoszyka{
+    color:#111;
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    line-height:2;
+    text-align:center;
+}
+
+#sumaKoszyka span{
+    display:block;
+    margin:10px 0;
+}
 </style>
 
 <script>
@@ -186,10 +199,10 @@ function policzSume(){
     let cenaPoRabacie = suma - (suma * rabat / 100);
 
 
-    document.getElementById("sumaKoszyka").innerHTML =
-    "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
-    "🎁 Rabat: " + rabat + "%<br>" +
-    "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
+document.getElementById("sumaKoszyka").innerHTML =
+"<span>💰 Cena: " + suma.toFixed(2) + " zł</span>" +
+"<span>🎁 Rabat: " + rabat + "%</span>" +
+"<span>✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł</span>";
 
 }
 
