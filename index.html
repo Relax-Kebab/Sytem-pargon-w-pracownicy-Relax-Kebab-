@@ -4,303 +4,131 @@
 <meta charset="UTF-8">
 <meta name="google" content="notranslate">
 <title>RELAX KEBAB - System Paragonów</title>
-<style>
 
-body {
+<style>
+body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#111;
-    color:white;
+    color:#fff;
     text-align:center;
 }
 
-#podsumowanie{
-
-    background:white;
-    color:black;
-
-    width:80%;
-    max-width:600px;
-
-    margin:25px auto;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    font-size:20px;
-
-    text-align:left;
-
-    box-shadow:0 3px 10px black;
-
-}
-    
-.topbar {
+.topbar{
     background:#ffc400;
     color:#111;
     padding:10px 0;
     text-align:center;
-    box-shadow:0 3px 10px black;
+    box-shadow:0 3px 10px #000;
 }
 
-.topbar h1 {
+.topbar h1{
     margin:0;
     font-size:42px;
 }
 
-.topbar p {
+.topbar p{
     margin:5px 0 0;
     font-size:18px;
+    font-weight:bold;
 }
 
-.box {
+.box{
     background:#292929;
     border:2px solid #ffc400;
-    padding:25px;
-    margin:40px auto;
     width:90%;
     max-width:1100px;
+    margin:35px auto;
+    padding:25px;
     border-radius:20px;
-    box-shadow:0 5px 20px black;
+    box-shadow:0 5px 20px #000;
 }
 
-
-.menu {
-    background:white;
+.menu{
+    background:#fff;
+    border-radius:20px;
     padding:30px;
-    border-radius:20px;
 }
 
-
-.produkty {
-
+.produkty{
     display:flex;
     justify-content:center;
-    align-items:center;
-    gap:25px;
     flex-wrap:wrap;
-
+    gap:25px;
 }
 
-
-.produkt {
-
-    background:#eeeeee;
-    color:black;
-
+.produkt{
+    background:#eee;
+    color:#111;
     width:230px;
     min-height:250px;
-
-    padding:20px;
-
     border-radius:20px;
-
+    padding:20px;
     font-size:20px;
     font-weight:bold;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.4);
-
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
 }
 
-
-.produkt button {
-
+.produkt button{
     width:65px;
     height:65px;
-
+    border:none;
     border-radius:50%;
-
-    font-size:32px;
-
     background:#ffc400;
     color:#111;
-
-    border:none;
-
+    font-size:32px;
     cursor:pointer;
-
 }
 
-
-.produkt button:hover {
-
+.produkt button:hover{
     background:#111;
     color:#ffc400;
-
 }
 
-
-.produkt span {
-
+.produkt span{
     display:inline-block;
-
-    font-size:35px;
-
     min-width:60px;
-
+    font-size:35px;
     margin:0 15px;
-
-    color:#111;
-
 }
 
-
-select {
-
+select{
     margin-top:20px;
-
     padding:12px;
-
     font-size:18px;
-
     border-radius:10px;
-
 }
 
-
-#wystaw {
-
+.wystaw{
     margin-top:20px;
-
-}
-
-
-.wystaw {
-
     background:#d60000;
-
-    color:white;
-
-    font-size:22px;
-
+    color:#fff;
+    border:none;
+    border-radius:15px;
     padding:15px 35px;
-
-    border-radius:15px;
-
+    font-size:22px;
+    cursor:pointer;
 }
 
+.wystaw:hover{
+    background:#a90000;
+}
 
-.paragon {
-
+#podsumowanie,
+.paragon{
+    background:#fff;
+    color:#111;
+    max-width:600px;
     margin:25px auto;
-
-    max-width:500px;
-
-    background:white;
-
-    color:black;
-
     padding:20px;
-
     border-radius:15px;
-
     text-align:left;
-
+    box-shadow:0 3px 10px #000;
 }
-
-
-function policzSume(){
-
-let suma=0;
-
-
-document.querySelectorAll(".produkt").forEach(el=>{
-
-let ilosc=Number(el.querySelector("span").innerText);
-let cena=Number(el.dataset.price);
-
-suma+=ilosc*cena;
-
-});
-
-
-let rabat=Number(document.getElementById("rabat").value);
-
-let przecena=suma-(suma*rabat/100);
-
-
-
-document.getElementById("sumaKoszyka").innerHTML=
-
-"💰 Cena: "+suma.toFixed(2)+" zł<br>"+
-"🎁 Rabat: "+rabat+"%<br>"+
-"✅ Do zapłaty: "+przecena.toFixed(2)+" zł";
-
-}
-
-
-
-function wystawParagon(){
-
-let tekst="";
-let suma=0;
-
-
-document.querySelectorAll(".produkt").forEach(el=>{
-
-let ilosc=Number(el.querySelector("span").innerText);
-
-if(ilosc>0){
-
-let cena=Number(el.dataset.price);
-
-tekst+=el.dataset.name+" x"+ilosc+"<br>";
-
-suma+=ilosc*cena;
-
-}
-
-});
-
-
-if(tekst==""){
-
-alert("Wybierz produkty");
-return;
-
-}
-
-
-
-let rabat=Number(document.getElementById("rabat").value);
-
-let poRabacie=suma-(suma*rabat/100);
-
-
-
-document.getElementById("paragon").innerHTML=
-
-"<div class='paragon'>"+
-"<h3>🌯 RELAX KEBAB</h3>"+
-tekst+
-"<br>💰 Przed rabatem: "+suma.toFixed(2)+" zł"+
-"<br>🎁 Rabat: "+rabat+"%"+
-"<br>✅ Do zapłaty: "+poRabacie.toFixed(2)+" zł"+
-"<br>📅 "+new Date().toLocaleString("pl-PL")+
-"</div>";
-
-
 </style>
-document.querySelectorAll(".produkt span").forEach(e=>{
 
-e.innerText="0";
-
-});
-
-
-document.getElementById("rabat").value="0";
-
-policzSume();
-
-}
-
-window.onload = function () {
-    policzSume();
-};
-    <script>
-
-function zmienIlosc(id, zmiana){
+<script>
+    function zmienIlosc(id, zmiana){
 
     let pole = document.getElementById(id);
 
@@ -317,72 +145,54 @@ function zmienIlosc(id, zmiana){
     policzSume();
 }
 
-
-
 function policzSume(){
 
     let suma = 0;
     let lista = "";
-
 
     document.querySelectorAll(".produkt").forEach(function(el){
 
         let ilosc = Number(el.querySelector("span").innerText);
         let cena = Number(el.dataset.price);
 
-
         if(ilosc > 0){
 
             suma += ilosc * cena;
 
-            lista += 
-            "🍽️ " + el.dataset.name +
-            " x" + ilosc +
-            " — " +
-            (ilosc*cena).toFixed(2) +
-            " zł<br>";
-
+            lista +=
+                "🍽️ " +
+                el.dataset.name +
+                " x" +
+                ilosc +
+                " — " +
+                (ilosc * cena).toFixed(2) +
+                " zł<br>";
         }
 
     });
 
-
-
-    if(lista==""){
-        lista="Brak produktów";
+    if(lista == ""){
+        lista = "Brak produktów";
     }
 
-
-
     document.getElementById("podsumowanie").innerHTML =
-
-    "<b>🍽️ Twoje zamówienie:</b><br><br>" +
-    lista;
-
-
+        "<b>🍽️ Twoje zamówienie:</b><br><br>" +
+        lista;
 
     let rabat = Number(document.getElementById("rabat").value);
 
-
-    let cenaPoRabacie = suma - (suma*rabat/100);
-
-
+    let cenaPoRabacie = suma - (suma * rabat / 100);
 
     document.getElementById("sumaKoszyka").innerHTML =
-
-    "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
-    "🎁 Rabat: " + rabat + "%<br>" +
-    "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
-
+        "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
+        "🎁 Rabat: " + rabat + "%<br>" +
+        "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
 }
-
-
 
 function wystawParagon(){
 
     let produkty = "";
     let suma = 0;
-
 
     document.querySelectorAll(".produkt").forEach(function(el){
 
@@ -392,86 +202,67 @@ function wystawParagon(){
 
             let cena = Number(el.dataset.price);
 
-            produkty += "🍽️ " + el.dataset.name +
-            " x" + ilosc + "<br>";
+            produkty +=
+                "🍽️ " +
+                el.dataset.name +
+                " x" +
+                ilosc +
+                "<br>";
 
             suma += cena * ilosc;
         }
 
     });
 
-
-    if(produkty === ""){
+    if(produkty == ""){
 
         alert("Dodaj produkty!");
+
         return;
-
     }
-
 
     let rabat = Number(document.getElementById("rabat").value);
 
-    let poRabacie = suma - (suma*rabat/100);
+    let poRabacie = suma - (suma * rabat / 100);
 
-
-
-    document.getElementById("paragon").innerHTML =
-
-    `
+    document.getElementById("paragon").innerHTML = `
     <div class="paragon">
+        <h3>🌯 RELAX KEBAB</h3>
 
-    <h3>🌯 RELAX KEBAB</h3>
+        ${produkty}
 
-    ${produkty}
+        <hr>
 
-    <hr>
+        💰 Przed rabatem: ${suma.toFixed(2)} zł<br>
+        🎁 Rabat: ${rabat}%<br>
+        ✅ Do zapłaty: ${poRabacie.toFixed(2)} zł<br><br>
 
-    💰 Przed rabatem:
-    ${suma.toFixed(2)} zł
-
-    <br>
-
-    🎁 Rabat:
-    ${rabat}%
-
-    <br>
-
-    ✅ Do zapłaty:
-    ${poRabacie.toFixed(2)} zł
-
-    <br><br>
-
-    📅 ${new Date().toLocaleString("pl-PL")}
-
+        📅 ${new Date().toLocaleString("pl-PL")}
     </div>
     `;
 
-
-
     document.querySelectorAll(".produkt span").forEach(function(e){
-
-        e.innerText="0";
-
+        e.innerText = "0";
     });
 
-
-    document.getElementById("rabat").value="0";
+    document.getElementById("rabat").value = "0";
 
     policzSume();
-
 }
 
-window.onload = function () {
+window.onload = function(){
     policzSume();
 };
-        
+
 </script>
+
 </head>
+
 <body>
 
 <div class="topbar">
     <h1>🌯 RELAX KEBAB</h1>
-    <p>Tuchomie • ul. Mickiewicza 1</p>
+    <p>📍 Tuchomie • ul. Mickiewicza 1</p>
 </div>
 
 <div class="box">
@@ -481,69 +272,107 @@ window.onload = function () {
 <div class="menu">
 
 <div class="produkty">
+    <div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
+🌯<br>
+<b>Duży Kebab Rollo</b><br>
+35 zł<br><br>
 
-<div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
-🌯<br><b>Duży Kebab Rollo</b><br>35 zł<br><br>
 <button onclick="zmienIlosc('duzy_rollo',-1)">➖</button>
 <span id="duzy_rollo">0</span>
 <button onclick="zmienIlosc('duzy_rollo',1)">➕</button>
+
 </div>
 
+
 <div class="produkt" data-name="Mały Kebab Rollo" data-price="28">
-🌯<br><b>Mały Kebab Rollo</b><br>28 zł<br><br>
+🌯<br>
+<b>Mały Kebab Rollo</b><br>
+28 zł<br><br>
+
 <button onclick="zmienIlosc('maly_rollo',-1)">➖</button>
 <span id="maly_rollo">0</span>
 <button onclick="zmienIlosc('maly_rollo',1)">➕</button>
+
 </div>
 
+
 <div class="produkt" data-name="Mały Kebab" data-price="28">
-🥙<br><b>Mały Kebab</b><br>28 zł<br><br>
+🥙<br>
+<b>Mały Kebab</b><br>
+28 zł<br><br>
+
 <button onclick="zmienIlosc('maly_kebab',-1)">➖</button>
 <span id="maly_kebab">0</span>
 <button onclick="zmienIlosc('maly_kebab',1)">➕</button>
+
 </div>
 
+
 <div class="produkt" data-name="Kebab z frytkami" data-price="36">
-🍱<br><b>Kebab z frytkami</b><br>36 zł<br><br>
+🍱<br>
+<b>Kebab z frytkami</b><br>
+36 zł<br><br>
+
 <button onclick="zmienIlosc('talerz',-1)">➖</button>
 <span id="talerz">0</span>
 <button onclick="zmienIlosc('talerz',1)">➕</button>
+
 </div>
 
+
 <div class="produkt" data-name="Frytki" data-price="15">
-🍟<br><b>Frytki</b><br>15 zł<br><br>
+🍟<br>
+<b>Frytki</b><br>
+15 zł<br><br>
+
 <button onclick="zmienIlosc('frytki',-1)">➖</button>
 <span id="frytki">0</span>
 <button onclick="zmienIlosc('frytki',1)">➕</button>
+
 </div>
 
+
 <div class="produkt" data-name="Ayran" data-price="13">
-🥤<br><b>Ayran</b><br>13 zł<br><br>
+🥤<br>
+<b>Ayran</b><br>
+13 zł<br><br>
+
 <button onclick="zmienIlosc('ayran',-1)">➖</button>
 <span id="ayran">0</span>
 <button onclick="zmienIlosc('ayran',1)">➕</button>
+
 </div>
-    
+
+
 <div class="produkt" data-name="Dowóz Bytów, Dąbki, Udorpie" data-price="10">
-🥤<br><b>Dowóz Bytów, Dąbki, Udorpie</b><br>10 zł<br><br>
-<button onclick="zmienIlosc('Dowóz Bytów, Dąbki, Udorpie',-1)">➖</button>
-<span id="Dowóz Bytów, Dąbki, Udorpie">0</span>
-<button onclick="zmienIlosc('Dowóz Bytów, Dąbki, Udorpie',1)">➕</button>
+🚗<br>
+<b>Dowóz Bytów, Dąbki, Udorpie</b><br>
+10 zł<br><br>
+
+<button onclick="zmienIlosc('dowoz_bytow',-1)">➖</button>
+<span id="dowoz_bytow">0</span>
+<button onclick="zmienIlosc('dowoz_bytow',1)">➕</button>
+
 </div>
-    
+
+
 <div class="produkt" data-name="Dowóz Milanów" data-price="20">
-🥤<br><b>Dowóz Milanówe</b><br>20 zł<br><br>
-<button onclick="zmienIlosc('Dowóz Milanów',-1)">➖</button>
-<span id="Dowóz Milanów">0</span>
-<button onclick="zmienIlosc('Dowóz Milanów',1)">➕</button>
+🚗<br>
+<b>Dowóz Milanów</b><br>
+20 zł<br><br>
+
+<button onclick="zmienIlosc('dowoz_milanow',-1)">➖</button>
+<span id="dowoz_milanow">0</span>
+<button onclick="zmienIlosc('dowoz_milanow',1)">➕</button>
+
 </div>
-    
-<div class="produkty">
-    
+
+
 <div class="produkt" data-name="🚑 Zestaw Służb Ratunkowych" data-price="110">
 🚑<br>
-<b>Zestaw Służb Ratunkowych</b><br><br>
-<b>110 zł</b><br><br>
+<b>Zestaw Służb Ratunkowych</b><br>
+110 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_ratunkowy',-1)">➖</button>
 <span id="zestaw_ratunkowy">0</span>
 <button onclick="zmienIlosc('zestaw_ratunkowy',1)">➕</button>
@@ -553,19 +382,19 @@ window.onload = function () {
 
 <div class="produkt" data-name="🐗 Zestaw Dzika" data-price="160">
 🐗<br>
-<b>Zestaw Dzika</b><br><br>
-<b>160 zł</b><br><br>
+<b>Zestaw Dzika</b><br>
+160 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_dzika',-1)">➖</button>
 <span id="zestaw_dzika">0</span>
 <button onclick="zmienIlosc('zestaw_dzika',1)">➕</button>
 
 </div>
-
-
 <div class="produkt" data-name="🍽️ Zestaw Talerzyka" data-price="98">
 🍽️<br>
-<b>Zestaw Talerzyka</b><br><br>
-<b>98 zł</b><br><br>
+<b>Zestaw Talerzyka</b><br>
+98 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_talerzyka',-1)">➖</button>
 <span id="zestaw_talerzyka">0</span>
 <button onclick="zmienIlosc('zestaw_talerzyka',1)">➕</button>
@@ -575,8 +404,9 @@ window.onload = function () {
 
 <div class="produkt" data-name="🏖 Zestaw Młodzieżowy" data-price="70">
 🏖<br>
-<b>Zestaw Młodzieżowy</b><br><br>
-<b>70 zł</b><br><br>
+<b>Zestaw Młodzieżowy</b><br>
+70 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_mlodziezowy',-1)">➖</button>
 <span id="zestaw_mlodziezowy">0</span>
 <button onclick="zmienIlosc('zestaw_mlodziezowy',1)">➕</button>
@@ -586,8 +416,9 @@ window.onload = function () {
 
 <div class="produkt" data-name="🏖 Zestaw Wczasowicza" data-price="90">
 🏖<br>
-<b>Zestaw Wczasowicza</b><br><br>
-<b>90 zł</b><br><br>
+<b>Zestaw Wczasowicza</b><br>
+90 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_wczasowicza',-1)">➖</button>
 <span id="zestaw_wczasowicza">0</span>
 <button onclick="zmienIlosc('zestaw_wczasowicza',1)">➕</button>
@@ -597,13 +428,15 @@ window.onload = function () {
 
 <div class="produkt" data-name="🏖 Zestaw Hardcora" data-price="270">
 🏖<br>
-<b>Zestaw Hardcora</b><br><br>
-<b>270 zł</b><br><br>
+<b>Zestaw Hardcora</b><br>
+270 zł<br><br>
+
 <button onclick="zmienIlosc('zestaw_hardcora',-1)">➖</button>
 <span id="zestaw_hardcora">0</span>
 <button onclick="zmienIlosc('zestaw_hardcora',1)">➕</button>
 
 </div>
+
 </div>
 
 
@@ -621,12 +454,14 @@ window.onload = function () {
 🎁 Rabat: 0%<br>
 ✅ Do zapłaty: 0.00 zł
 </h2>
-    
-<div id="podsumowanie" class="paragon">
+
+
+<div id="podsumowanie">
 <b>🍽️ Twoje zamówienie:</b>
-<br>
+<br><br>
 Brak produktów
 </div>
+
 
 <button class="wystaw" onclick="wystawParagon()">
 🧾 Wyślij paragon
@@ -635,7 +470,10 @@ Brak produktów
 
 <div id="paragon"></div>
 
+
 </div>
-</div>  
+</div>
+
+
 </body>
 </html>
