@@ -5,126 +5,114 @@
 <meta name="google" content="notranslate">
 <title>RELAX KEBAB - System Paragonów</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1c1c1c;
-    color: white;
-    text-align: center;
-}
-.topbar {
-    background: #ffc400;
-    color: #111;
-    padding: 15px;
-    box-shadow: 0 3px 10px black;
-}
-.topbar h1 {
-    margin: 0;
-    font-size: 34px;
-}
-.topbar p {
-    margin: 5px;
-    font-size: 18px;
-    font-weight: bold;
-}
-.box {
-    background: #292929;
-    border: 2px solid #ffc400;
-    padding: 20px;
-    margin: 25px auto;
-    width: 520px;
-    border-radius: 15px;
-}
-#pracownik, #admin {
-    display: none;
-}
-input, button {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 8px;
-}
-input {
-    width: 90%;
-}
-button {
-    background: #ffc400;
-    color: #111;
-    border: 0;
-    font-weight: bold;
-    cursor: pointer;
-}
-button:hover {
-    background: white;
-}
-.menu {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-.produkty {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-.produkt {
-    background: #eee;
-    color: black;
-    width: 170px;
-    padding: 15px;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-}
-.produkt button {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-    margin: 0 5px;
-}
-.produkt span {
-    font-size: 22px;
-    margin: 10px;
-    display: inline-block;
-    min-width: 25px;
-}
-.paragon {
-    background: white;
-    color: black;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    text-align: left;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.usun {
-    background: red;
-    color: white;
-}
-.usun:hover {
-    background: darkred;
-    color: white;
-}
-.wystaw{
-    background:#d60000;
-    color:white;
-    font-size:18px;
-    padding:14px 24px;
-    margin-top:15px;
+body function zmienIlosc(id, zmiana){
+
+let pole=document.getElementById(id);
+let ilosc=Number(pole.innerText)+zmiana;
+
+if(ilosc<0) ilosc=0;
+
+pole.innerText=ilosc;
+
+policzSume();
+
 }
 
-.wystaw:hover{
-    background:#a80000;
-    color:white;
+
+
+function policzSume(){
+
+let suma=0;
+
+
+document.querySelectorAll(".produkt").forEach(el=>{
+
+let ilosc=Number(el.querySelector("span").innerText);
+let cena=Number(el.dataset.price);
+
+suma+=ilosc*cena;
+
+});
+
+
+let rabat=Number(document.getElementById("rabat").value);
+
+let przecena=suma-(suma*rabat/100);
+
+
+
+document.getElementById("sumaKoszyka").innerHTML=
+
+"💰 Cena: "+suma.toFixed(2)+" zł<br>"+
+"🎁 Rabat: "+rabat+"%<br>"+
+"✅ Do zapłaty: "+przecena.toFixed(2)+" zł";
+
 }
-#sumaKoszyka {
-    color: black;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 20px;
+
+
+
+function wystawParagon(){
+
+let tekst="";
+let suma=0;
+
+
+document.querySelectorAll(".produkt").forEach(el=>{
+
+let ilosc=Number(el.querySelector("span").innerText);
+
+if(ilosc>0){
+
+let cena=Number(el.dataset.price);
+
+tekst+=el.dataset.name+" x"+ilosc+"<br>";
+
+suma+=ilosc*cena;
+
+}
+
+});
+
+
+if(tekst==""){
+
+alert("Wybierz produkty");
+return;
+
+}
+
+
+
+let rabat=Number(document.getElementById("rabat").value);
+
+let poRabacie=suma-(suma*rabat/100);
+
+
+
+document.getElementById("paragon").innerHTML=
+
+"<div class='paragon'>"+
+"<h3>🌯 RELAX KEBAB</h3>"+
+tekst+
+"<br>💰 Przed rabatem: "+suma.toFixed(2)+" zł"+
+"<br>🎁 Rabat: "+rabat+"%"+
+"<br>✅ Do zapłaty: "+poRabacie.toFixed(2)+" zł"+
+"<br>📅 "+new Date().toLocaleString("pl-PL")+
+"</div>";
+
+
+
+document.querySelectorAll(".produkt span").forEach(e=>{
+
+e.innerText="0";
+
+});
+
+
+document.getElementById("rabat").value="0";
+
+policzSume();
+
 }
 </style>
 </head>
@@ -135,349 +123,83 @@ button:hover {
     <p>Tuchomie • ul. Mickiewicza 1</p>
 </div>
 
-<!-- PANEL LOGOWANIA -->
-<div id="login" class="box">
-    <input id="loginInput" placeholder="Login">
-    <input id="passwordInput" type="password" placeholder="Hasło">
-    <button onclick="login()">Zaloguj</button>
+<div class="box">
+
+<h2>🧾 Zamówienie</h2>
+
+<div class="menu">
+
+<div class="produkty">
+
+<div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
+🌯<br><b>Duży Kebab Rollo</b><br>35 zł<br><br>
+<button onclick="zmienIlosc('duzy_rollo',-1)">➖</button>
+<span id="duzy_rollo">0</span>
+<button onclick="zmienIlosc('duzy_rollo',1)">➕</button>
 </div>
 
-<!-- PANEL PRACOWNIKA -->
-<div id="pracownik" class="box">
-    <h2>Pracownik</h2>
-    <h3 id="nazwaPracownika"></h3>
-    <div class="menu">
-        <div class="produkty">
-            <div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
-                🌯<br><b>Duży Kebab Rollo</b><br>35 zł<br><br>
-                <button onclick="zmienIlosc('duzy_rollo', -1)">➖</button>
-                <span id="duzy_rollo">0</span>
-                <button onclick="zmienIlosc('duzy_rollo', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Mały Kebab Rollo" data-price="28">
-                🌯<br><b>Mały Kebab Rollo</b><br>28 zł<br><br>
-                <button onclick="zmienIlosc('maly_rollo', -1)">➖</button>
-                <span id="maly_rollo">0</span>
-                <button onclick="zmienIlosc('maly_rollo', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Mały Kebab" data-price="28">
-                🥙<br><b>Mały Kebab</b><br>28 zł<br><br>
-                <button onclick="zmienIlosc('maly_kebab', -1)">➖</button>
-                <span id="maly_kebab">0</span>
-                <button onclick="zmienIlosc('maly_kebab', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Kebab z frytkami na talerzu" data-price="36">
-                🍱<br><b>Kebab z frytkami</b><br>36 zł<br><br>
-                <button onclick="zmienIlosc('talerz', -1)">➖</button>
-                <span id="talerz">0</span>
-                <button onclick="zmienIlosc('talerz', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Frytki" data-price="15">
-                🍱<br><b>Frytki</b><br>15 zł<br><br>
-                <button onclick="zmienIlosc('frytki', -1)">➖</button>
-                <span id="frytki">0</span>
-                <button onclick="zmienIlosc('frytki', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Ayran" data-price="13">
-                🥤<br><b>Ayran</b><br>13 zł<br><br>
-                <button onclick="zmienIlosc('Ayran', -1)">➖</button>
-                <span id="Ayran">0</span>
-                <button onclick="zmienIlosc('Ayran', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Dowóz (Bytów, Dąbki, Udorpie)" data-price="10">
-                🚗<br><b>Dowóz (Bytów, Dąbki, Udorpie)</b><br>10 zł<br><br>
-                <button onclick="zmienIlosc('dowoz1', -1)">➖</button>
-                <span id="dowoz1">0</span>
-                <button onclick="zmienIlosc('dowoz1', 1)">➕</button>
-            </div>
-            <div class="produkt" data-name="Dowóz (Milanów)" data-price="20">
-                🚗<br><b>Dowóz (Milanów)</b><br>20 zł<br><br>
-                <button onclick="zmienIlosc('dowoz2', -1)">➖</button>
-                <span id="dowoz2">0</span>
-                <button onclick="zmienIlosc('dowoz2', 1)">➕</button>
-            </div>
-        </div>
-        <label><b>🎁 Rabat:</b></label><br>
+<div class="produkt" data-name="Mały Kebab Rollo" data-price="28">
+🌯<br><b>Mały Kebab Rollo</b><br>28 zł<br><br>
+<button onclick="zmienIlosc('maly_rollo',-1)">➖</button>
+<span id="maly_rollo">0</span>
+<button onclick="zmienIlosc('maly_rollo',1)">➕</button>
+</div>
+
+<div class="produkt" data-name="Mały Kebab" data-price="28">
+🥙<br><b>Mały Kebab</b><br>28 zł<br><br>
+<button onclick="zmienIlosc('maly_kebab',-1)">➖</button>
+<span id="maly_kebab">0</span>
+<button onclick="zmienIlosc('maly_kebab',1)">➕</button>
+</div>
+
+<div class="produkt" data-name="Kebab z frytkami" data-price="36">
+🍱<br><b>Kebab z frytkami</b><br>36 zł<br><br>
+<button onclick="zmienIlosc('talerz',-1)">➖</button>
+<span id="talerz">0</span>
+<button onclick="zmienIlosc('talerz',1)">➕</button>
+</div>
+
+<div class="produkt" data-name="Frytki" data-price="15">
+🍟<br><b>Frytki</b><br>15 zł<br><br>
+<button onclick="zmienIlosc('frytki',-1)">➖</button>
+<span id="frytki">0</span>
+<button onclick="zmienIlosc('frytki',1)">➕</button>
+</div>
+
+<div class="produkt" data-name="Ayran" data-price="13">
+🥤<br><b>Ayran</b><br>13 zł<br><br>
+<button onclick="zmienIlosc('ayran',-1)">➖</button>
+<span id="ayran">0</span>
+<button onclick="zmienIlosc('ayran',1)">➕</button>
+</div>
+
+</div>
+
+
+<label><b>🎁 Rabat:</b></label><br>
 
 <select id="rabat" onchange="policzSume()">
-    <option value="0">Brak rabatu</option>
-    <option value="20">🚒 PSP (-20%)</option>
-    <option value="10">🚑 KPP / PR / SD (-10%)</option>
+<option value="0">Brak rabatu</option>
+<option value="20">🚒 PSP (-20%)</option>
+<option value="10">🚑 KPP / PR / SD (-10%)</option>
 </select>
 
-<br><br>
 
-<button class="wystaw" onclick="wystawParagon()">🧾 Wystaw paragon</button>
+<h2 id="sumaKoszyka">
+💰 Razem: 0 zł
+</h2>
 
-<h2 id="sumaKoszyka">💰 Razem: 0 zł</h2>
-        <button onclick="logout()">Wyloguj</button>
-    </div>
+
+<button class="wystaw" onclick="wystawParagon()">
+🧾 Wyślij paragon
+</button>
+
+
+<div id="paragon"></div>
+
+
 </div>
-
-<!-- PANEL ADMINA -->
-<div id="admin" class="box">
-    <h2>Administrator</h2>
-    <h3 id="statystyki"></h3>
-    <button onclick="pokazParagony('wszyscy')">Wszyscy</button>
-    <button onclick="pokazParagony('Szefuncio')">Szefuncio</button>
-    <button onclick="pokazParagony('Szczurek')">Szczurek</button>
-    <button onclick="pokazParagony('Jacek')">Jacek</button>
-    <button onclick="pokazParagony('Mati')">Mati</button>
-    <button onclick="pokazParagony('Dominki Wiśniewski')">Dominki Wiśniewski</button>
-    <button onclick="pokazParagony('2')">2</button>
-    <button onclick="pokazParagony('3')">3</button>
-    <button onclick="pokazParagony('4')">4</button>
-    <button onclick="pokazParagony('5')">5</button>
-    <button onclick="pokazParagony('6')">6</button>
-    <button onclick="pokazParagony('7')">7</button>
-    <button onclick="pokazParagony('8')">8</button>
-    <button onclick="pokazParagony('9')">9</button>
-    <button onclick="pokazParagony('11')">11</button>
-    <button onclick="pokazParagony('12')">12</button>
-    <button onclick="pokazParagony('13')">13</button>
-    <button onclick="pokazParagony('14')">14</button>
-    <button onclick="pokazParagony('15')">15</button>
-    <button onclick="pokazParagony('16')">16</button>
-    <button onclick="pokazParagony('17')">17</button>
-    <button onclick="pokazParagony('18')">18</button>
-    <button onclick="pokazParagony('19')">19</button>
-    <button onclick="pokazParagony('20')">20</button>
-    <br><br>
-    <button class="usun" onclick="usunWszystkie()">Usuń wszystkie paragony</button>
-    <div id="listaParagonow"></div>
-    <button onclick="logout()">Wyloguj</button>
 </div>
-
-<script>
-let pracownicy = [
-    { login: "szefuncio", haslo: "Tobardzoskomplikowane4321@", imie: "Szefuncio" },
-    { login: "szczurek", haslo: "Pojazduprzywilejowany321@", imie: "Szczurek" },
-    { login: "jacek", haslo: "Dowódca@4321", imie: "Jacek" },
-    { login: "mati", haslo: "poprostumati@321", imie: "Mati" },
-    { login: "dominki wiśniewski", haslo: "Drix54321@", imie: "Dominki Wiśniewski" },
-    { login: "22b", haslo: "B", imie: "2" },
-    { login: "33c", haslo: "C", imie: "3" },
-    { login: "44d", haslo: "D", imie: "4" },
-    { login: "55e", haslo: "E", imie: "5" },
-    { login: "66f", haslo: "F", imie: "6" },
-    { login: "77g", haslo: "G", imie: "7" },
-    { login: "88h", haslo: "H", imie: "8" },
-    { login: "99i", haslo: "I", imie: "9" },
-    { login: "100j", haslo: "J", imie: "10" },
-    { login: "111k", haslo: "K", imie: "11" },
-    { login: "112l", haslo: "L", imie: "12" },
-    { login: "113m", haslo: "M", imie: "13" },
-    { login: "114n", haslo: "N", imie: "14" },
-    { login: "115o", haslo: "O", imie: "15" },
-    { login: "116p", haslo: "P", imie: "16" },
-    { login: "117r", haslo: "R", imie: "17" },
-    { login: "118s", haslo: "S", imie: "18" },
-    { login: "119t", haslo: "T", imie: "19" },
-    { login: "120u", haslo: "U", imie: "20" }
-];
-
-let aktualnyPracownik = "";
-
-function login() {
-    let login = document.getElementById("loginInput").value;
-    let haslo = document.getElementById("passwordInput").value;
-
-    if (login == "admin" && haslo == "admin123") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("admin").style.display = "block";
-        aktualnyPracownik = "Admin";
-        pokazParagony("wszyscy");
-        return;
-    }
-
-    let osoba = pracownicy.find(function(p) {
-        return p.login == login.toLowerCase() && p.haslo == haslo;
-    });
-
-    if (osoba) {
-        aktualnyPracownik = osoba.imie;
-        document.getElementById("login").style.display = "none";
-        document.getElementById("pracownik").style.display = "block";
-        document.getElementById("nazwaPracownika").innerHTML = "Witaj " + aktualnyPracownik;
-        resetFormularza();
-    } else {
-        alert("Błędny login lub hasło");
-    }
-}
-
-function logout() {
-    document.getElementById("pracownik").style.display = "none";
-    document.getElementById("admin").style.display = "none";
-    document.getElementById("login").style.display = "block";
-    document.getElementById("loginInput").value = "";
-    document.getElementById("passwordInput").value = "";
-}
-
-function zmienIlosc(id, zmiana) {
-
-    let pole = document.getElementById(id);
-    let ilosc = Number(pole.innerText);
-
-    ilosc += zmiana;
-
-    if (ilosc < 0) {
-        ilosc = 0;
-    }
-
-    pole.innerText = ilosc;
-
-    policzSume();
-}
-function policzSume() {
-
-    let suma = 0;
-
-    document.querySelectorAll(".produkt").forEach(function(el) {
-
-        let ilosc = Number(el.querySelector("span").innerText);
-        let cena = Number(el.dataset.price);
-
-        suma += ilosc * cena;
-
-    });
-
-    let rabat = Number(document.getElementById("rabat").value);
-
-    let doZaplaty = suma - (suma * rabat / 100);
-
-    document.getElementById("sumaKoszyka").innerHTML =
-        "💰 Razem: <s>" + suma + " zł</s><br>" +
-        "🎁 Rabat: " + rabat + "%<br>" +
-        "✅ Do zapłaty: " + doZaplaty.toFixed(2) + " zł";
-}
-function resetFormularza() {
-
-    let elementy = document.querySelectorAll(".produkt span");
-
-    elementy.forEach(function(span) {
-        span.innerText = "0";
-    });
-
-    // Reset rabatu do "Brak rabatu"
-    document.getElementById("rabat").value = "0";
-
-    policzSume();
-}
-
-function wystawParagon() {
-    let produkty = [];
-    let suma = 0;
-    let rabat = Number(document.getElementById("rabat").value);
-    let elementy = document.querySelectorAll(".produkt");
-
-    elementy.forEach(function(el) {
-        let spanId = el.querySelector("span").id;
-        let ilosc = Number(document.getElementById(spanId).innerText);
-        
-        if (ilosc > 0) {
-            let nazwa = el.getAttribute("data-name");
-            let cena = Number(el.getAttribute("data-price"));
-            produkty.push(nazwa + " x" + ilosc);
-            suma += ilosc * cena;
-        }
-    });
-
-    let doZaplaty = suma - (suma * rabat / 100);
-    if (produkty.length == 0) {
-        alert("Wybierz przynajmniej jeden produkt");
-        return;
-    }
-
-let nowyParagon = {
-    pracownik: aktualnyPracownik,
-    data: new Date().toLocaleString("pl-PL"),
-    produkty: produkty.join(", "),
-    cenaPrzedRabatem: suma,
-    rabat: rabat,
-    cena: doZaplaty
-};
-
-    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
-    lista.push(nowyParagon);
-    localStorage.setItem("paragony", JSON.stringify(lista));
-    
-    alert("Paragon wystawiony!\nDo zapłaty: " + doZaplaty.toFixed(2) + " zł");
-    resetFormularza();
-}
-
-function pokazParagony(filtr) {
-
-    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
-    let listaKontener = document.getElementById("listaParagonow");
-    let statystykiKontener = document.getElementById("statystyki");
-
-    listaKontener.innerHTML = "";
-
-    let przefiltrowanaLista = lista
-        .map((p, i) => ({ ...p, indeks: i }))
-        .filter(p => filtr === "wszyscy" || p.pracownik === filtr);
-
-    let lacznyUtarg = 0;
-let zarobki = {};
-
-    przefiltrowanaLista.forEach(function(p) {
-
-        lacznyUtarg += p.cena;
-if (!zarobki[p.pracownik]) {
-    zarobki[p.pracownik] = 0;
-}
-
-zarobki[p.pracownik] += p.cena;
-
-        let div = document.createElement("div");
-        div.className = "paragon";
-
-div.innerHTML =
-    "🧑‍🍳<b>Pracownik:</b> " + p.pracownik + "<br>" +
-    "📆<b>Data:</b> " + p.data + "<br>" +
-    "🍽️<b>Produkty:</b> " + p.produkty + "<br>" +
-    "💰<b>Cena przed rabatem:</b> " + (p.cenaPrzedRabatem ?? p.cena) + " zł<br>" +
-    "🎁<b>Rabat:</b> " + (p.rabat || 0) + "%<br>" +
-    "💸<b>Do zapłaty:</b> " + p.cena + " zł<br><br>" +
-    "<button class='usun' onclick='usunParagon(" + p.indeks + ")'>🗑 Usuń paragon</button>";
-
-        listaKontener.appendChild(div);
-    });
-
-    let tekstZarobki = "";
-
-for (let osoba in zarobki) {
-    tekstZarobki += "👤 " + osoba + ": " + zarobki[osoba] + " zł<br>";
-}
-
-statystykiKontener.innerHTML =
-    "💰 Utarg: " + lacznyUtarg + " zł<br>" +
-    "🧾 Zamówień: " + przefiltrowanaLista.length +
-    "<br><br>" +
-    "📊 Zarobki pracowników:<br>" +
-    tekstZarobki;
-
-}
-
-function usunWszystkie() {
-    if (confirm("Czy na pewno chcesz usunąć całą historię paragonów?")) {
-        localStorage.removeItem("paragony");
-        pokazParagony("wszyscy");
-    }
-}
-
-function usunParagon(index) {
-    if (!confirm("Usunąć ten paragon?")) return;
-
-    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
-
-    lista.splice(index, 1);
-
-    localStorage.setItem("paragony", JSON.stringify(lista));
-
-    pokazParagony("wszyscy");
-}
-</script>
-
+</script>    
 </body>
 </html>
