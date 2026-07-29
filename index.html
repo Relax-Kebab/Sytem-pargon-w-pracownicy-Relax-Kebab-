@@ -35,9 +35,10 @@ body {
     width: 520px;
     border-radius: 15px;
 }
-#pracownik, #admin {
-    display: none;
-}
+   #pracownik {
+    display: block;
+} 
+
 input, button {
     padding: 10px;
     margin: 5px;
@@ -135,17 +136,9 @@ button:hover {
     <p>Tuchomie • ul. Mickiewicza 1</p>
 </div>
 
-<!-- PANEL LOGOWANIA -->
-<div id="login" class="box">
-    <input id="loginInput" placeholder="Login">
-    <input id="passwordInput" type="password" placeholder="Hasło">
-    <button onclick="login()">Zaloguj</button>
-</div>
-
 <!-- PANEL PRACOWNIKA -->
 <div id="pracownik" class="box">
-    <h2>Pracownik</h2>
-    <h3 id="nazwaPracownika"></h3>
+    <h2>RELAX KEBAB - Sprzedaż</h2>
     <div class="menu">
         <div class="produkty">
             <div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
@@ -262,81 +255,7 @@ button:hover {
     </div>
 </div>
 
-<!-- PANEL ADMINA -->
-<div id="admin" class="box">
-    <h2>Administrator</h2>
-    <h3 id="statystyki"></h3>
-    <button onclick="pokazParagony('wszyscy')">Wszyscy</button>
-    <button onclick="pokazParagony('Szefuncio')">Szefuncio</button>
-    <button onclick="pokazParagony('Szczurek')">Szczurek</button>
-    <button onclick="pokazParagony('Jacek')">Jacek</button>
-    <button onclick="pokazParagony('Mati')">Mati</button>
-    <button onclick="pokazParagony('Dominki Wiśniewski')">Dominki Wiśniewski</button>
-    <button onclick="pokazParagony('2')">2</button>
-    <button onclick="pokazParagony('3')">3</button>
-    <button onclick="pokazParagony('4')">4</button>
-    <button onclick="pokazParagony('5')">5</button>
-    <button onclick="pokazParagony('6')">6</button>
-    <button onclick="pokazParagony('7')">7</button>
-    <button onclick="pokazParagony('8')">8</button>
-    <button onclick="pokazParagony('9')">9</button>
-    <button onclick="pokazParagony('11')">11</button>
-    <button onclick="pokazParagony('12')">12</button>
-    <button onclick="pokazParagony('13')">13</button>
-    <button onclick="pokazParagony('14')">14</button>
-    <button onclick="pokazParagony('15')">15</button>
-    <button onclick="pokazParagony('16')">16</button>
-    <button onclick="pokazParagony('17')">17</button>
-    <button onclick="pokazParagony('18')">18</button>
-    <button onclick="pokazParagony('19')">19</button>
-    <button onclick="pokazParagony('20')">20</button>
-    <br><br>
-    <button class="usun" onclick="usunWszystkie()">Usuń wszystkie paragony</button>
-    <div id="listaParagonow"></div>
-    <button onclick="logout()">Wyloguj</button>
-</div>
-
 <script>
-let pracownicy = [
-    { login: "szefuncio", haslo: "Tobardzoskomplikowane4321@", imie: "Szefuncio" },
-    { login: "szczurek", haslo: "Pojazduprzywilejowany321@", imie: "Szczurek" },
-    { login: "jacek", haslo: "Dowódca@4321", imie: "Jacek" },
-    { login: "mati", haslo: "poprostumati@321", imie: "Mati" },
-    { login: "drix", haslo: "Drix54321@1", imie: "Dominki Wiśniewski" },
-    { login: "22b", haslo: "B", imie: "2" },
-    { login: "33c", haslo: "C", imie: "3" },
-    { login: "44d", haslo: "D", imie: "4" },
-    { login: "55e", haslo: "E", imie: "5" },
-    { login: "66f", haslo: "F", imie: "6" },
-    { login: "77g", haslo: "G", imie: "7" },
-    { login: "88h", haslo: "H", imie: "8" },
-    { login: "99i", haslo: "I", imie: "9" },
-    { login: "100j", haslo: "J", imie: "10" },
-    { login: "111k", haslo: "K", imie: "11" },
-    { login: "112l", haslo: "L", imie: "12" },
-    { login: "113m", haslo: "M", imie: "13" },
-    { login: "114n", haslo: "N", imie: "14" },
-    { login: "115o", haslo: "O", imie: "15" },
-    { login: "116p", haslo: "P", imie: "16" },
-    { login: "117r", haslo: "R", imie: "17" },
-    { login: "118s", haslo: "S", imie: "18" },
-    { login: "119t", haslo: "T", imie: "19" },
-    { login: "120u", haslo: "U", imie: "20" }
-];
-
-let aktualnyPracownik = "";
-
-function login() {
-    let login = document.getElementById("loginInput").value;
-    let haslo = document.getElementById("passwordInput").value;
-
-    if (login == "admin" && haslo == "admin123") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("admin").style.display = "block";
-        aktualnyPracownik = "Admin";
-        pokazParagony("wszyscy");
-        return;
-    }
 
     let osoba = pracownicy.find(function(p) {
         return p.login == login.toLowerCase() && p.haslo == haslo;
@@ -351,15 +270,6 @@ function login() {
     } else {
         alert("Błędny login lub hasło");
     }
-}
-
-function logout() {
-    document.getElementById("pracownik").style.display = "none";
-    document.getElementById("admin").style.display = "none";
-    document.getElementById("login").style.display = "block";
-    document.getElementById("loginInput").value = "";
-    document.getElementById("passwordInput").value = "";
-}
 
 function zmienIlosc(id, zmiana) {
 
@@ -458,82 +368,6 @@ let nowyParagon = {
     
     alert("Paragon wystawiony!\nDo zapłaty: " + doZaplaty.toFixed(2) + " zł");
     resetFormularza();
-}
-
-function pokazParagony(filtr) {
-
-    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
-    let listaKontener = document.getElementById("listaParagonow");
-    let statystykiKontener = document.getElementById("statystyki");
-
-    listaKontener.innerHTML = "";
-
-    let przefiltrowanaLista = lista
-        .map((p, i) => ({ ...p, indeks: i }))
-        .filter(p => filtr === "wszyscy" || p.pracownik === filtr);
-
-    let lacznyUtarg = 0;
-let zarobki = {};
-
-    przefiltrowanaLista.forEach(function(p) {
-
-        lacznyUtarg += p.cena;
-if (!zarobki[p.pracownik]) {
-    zarobki[p.pracownik] = 0;
-}
-
-zarobki[p.pracownik] += p.cena;
-
-        let div = document.createElement("div");
-        div.className = "paragon";
-
-div.innerHTML =
-    "🧑‍🍳<b>Pracownik:</b> " + p.pracownik + "<br>" +
-    "📆<b>Data:</b> " + p.data + "<br>" +
-    "🍽️<b>Produkty:</b> " + p.produkty + "<br>" +
-    "💰<b>Cena przed rabatem:</b> " + (p.cenaPrzedRabatem ?? p.cena) + " zł<br>" +
-    "🎁<b>Rabat:</b> " + (p.rabat || 0) + "%<br>" +
-    "💸<b>Do zapłaty:</b> " + p.cena + " zł<br><br>" +
-    "<button class='usun' onclick='usunParagon(" + p.indeks + ")'>🗑 Usuń paragon</button>";
-
-        listaKontener.appendChild(div);
-    });
-
-    let tekstZarobki = "";
-
-for (let osoba in zarobki) {
-    tekstZarobki += "👤 " + osoba + ": " + zarobki[osoba] + " zł<br>";
-}
-
-statystykiKontener.innerHTML =
-    "💰 Utarg: " + lacznyUtarg + " zł<br>" +
-    "🧾 Zamówień: " + przefiltrowanaLista.length +
-    "<br><br>" +
-    "📊 Zarobki pracowników:<br>" +
-    tekstZarobki;
-
-}
-
-function usunWszystkie() {
-    if (confirm("Czy na pewno chcesz usunąć całą historię paragonów?")) {
-        localStorage.removeItem("paragony");
-        pokazParagony("wszyscy");
-    }
-}
-
-function usunParagon(index) {
-    if (!confirm("Usunąć ten paragon?")) return;
-
-    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
-
-    lista.splice(index, 1);
-
-fetch("zapisz_paragon.php", {
-    method:"POST",
-    body: JSON.stringify(nowyParagon)
-});
-
-    pokazParagony("wszyscy");
 }
 </script>
 
