@@ -1,483 +1,483 @@
 <!DOCTYPE html>
-<html język="proszę"tłumaczyć="NIE">
-<głowa>
-<meta zestaw znaków="UTF-8">
-<meta nazwa="Google"treść="nie tłumaczyć">
-<tytuł>RELAX KEBAB - System Paragonów</tytuł>
-<styl>
-ciało{
-    margines: 0;
-    rodzina czcionek:Arial,bezszeryfowy;
-    tło: #1c1c1c;
-    kolor:biały;
-    wyrównanie tekstu:centrum;
+<html lang="pl" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<title>RELAX KEBAB - System Paragonów</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1c1c1c;
+    color: white;
+    text-align: center;
 }
-.pasek górny{
-    tło: #ffc400;
-    kolor: #111;
-    wyściółka: 15px;
-    cień pudełka: 0 3px 10pxczarny;
+.topbar {
+    background: #ffc400;
+    color: #111;
+    padding: 15px;
+    box-shadow: 0 3px 10px black;
 }
-.pasek górny h1{
-    margines: 0;
-    rozmiar czcionki: 34px;
+.topbar h1 {
+    margin: 0;
+    font-size: 34px;
 }
-.pasek górny P{
-    margines: 5px;
-    rozmiar czcionki: 18px;
-    grubość czcionki:pogrubiony;
+.topbar p {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
 }
-.skrzynka{
-    tło: #292929;
-    granica: 2pxsolidny#ffc400;
-    wyściółka: 20px;
-    margines: 25pxautomatyczny;
-    szerokość: 520px;
-    promień graniczny: 15px;
+.box {
+    background: #292929;
+    border: 2px solid #ffc400;
+    padding: 20px;
+    margin: 25px auto;
+    width: 520px;
+    border-radius: 15px;
 }
-#pracownik, #administrator{
-    wyświetlacz:nic;
+#pracownik, #admin {
+    display: none;
 }
-wejście, przycisk{
-    wyściółka: 10px;
-    margines: 5px;
-    promień graniczny: 8px;
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
 }
-wejście{
-    szerokość: 90%;
+input {
+    width: 90%;
 }
-przycisk{
-    tło: #ffc400;
-    kolor: #111;
-    granica: 0;
-    grubość czcionki:pogrubiony;
-    kursor:wskaźnik;
+button {
+    background: #ffc400;
+    color: #111;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
 }
-przycisk:wahać się{
-    tło:biały;
+button:hover {
+    background: white;
 }
-.menu{
-    tło:biały;
-    wyściółka: 20px;
-    promień graniczny: 15px;
-    przelewowy:ukryty;
+.menu {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    overflow: hidden;
 }
-.produkty{
-    wyświetlacz:przewód;
-    wyjustuj treść:centrum;
-    luka: 15px;
-    flex-wrap:zawinąć;
-    margines-dolny: 20px;
+.produkty {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
-.produkt{
-    tło: #eee;
-    kolor:czarny;
-    szerokość: 170px;
-    wyściółka: 15px;
-    promień graniczny: 15px;
-    rozmiar czcionki: 18px;
-    grubość czcionki:pogrubiony;
-    cień pudełka: 0 3px 8px RGBA(0,0,0,0,3);
+.produkt {
+    background: #eee;
+    color: black;
+    width: 170px;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
-.produkt przycisk{
-    szerokość: 40px;
-    wysokość: 40px;
-    rozmiar czcionki: 22px;
-    margines: 0 5px;
+.produkt button {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    margin: 0 5px;
 }
-.produkt przęsło{
-    rozmiar czcionki: 22px;
-    margines: 10px;
-    wyświetlacz:blok wbudowany;
-    minimalna szerokość: 25px;
+.produkt span {
+    font-size: 22px;
+    margin: 10px;
+    display: inline-block;
+    min-width: 25px;
 }
-.wzór doskonałości{
-    tło:biały;
-    kolor:czarny;
-    wyściółka: 15px;
-    margines: 10px 0;
-    promień graniczny: 10px;
-    wyrównanie tekstu:lewy;
-    cień pudełka: 0 2px 5px RGBA(0,0,0,0,2);
+.paragon {
+    background: white;
+    color: black;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.używać{
-    tło:czerwony;
-    kolor:biały;
+.usun {
+    background: red;
+    color: white;
 }
-.używać:wahać się{
-    tło:ciemnoczerwony;
-    kolor:biały;
+.usun:hover {
+    background: darkred;
+    color: white;
 }
 .wystaw{
-    tło:#d60000;
-    kolor:biały;
-    rozmiar czcionki:18px;
-    wyściółka:14px 24px;
-    margines górny:15px;
+    background:#d60000;
+    color:white;
+    font-size:18px;
+    padding:14px 24px;
+    margin-top:15px;
 }
 
-.wystaw:wahać się{
-    tło:#a80000;
-    kolor:biały;
+.wystaw:hover{
+    background:#a80000;
+    color:white;
 }
-#sumaKoszyka{
-    kolor:czarny;
-    rozmiar czcionki: 28px;
-    grubość czcionki:pogrubiony;
-    margines górny: 20px;
+#sumaKoszyka {
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
 }
-</styl>
-</głowa>
-<ciało>
+</style>
+</head>
+<body>
 
-<div klasa="pasek górny">
-    <h1>🌯 RELAKSUJĄCY KEBAB</h1>
-    <P>Tuchomie • ul. Mickiewicza 1</P>
+<div class="topbar">
+    <h1>🌯 RELAX KEBAB</h1>
+    <p>Tuchomie • ul. Mickiewicza 1</p>
 </div>
 
 <!-- PANEL LOGOWANIA -->
-<div id="login"klasa="skrzynka">
-    <wejście id="loginInput"symbol zastępczy="Login">
-    <wejście id="hasłoWprowadzanie"typ="hasło"symbol zastępczy="Hasło">
-    <przycisk kliknięcie="login()">Zaloguj</przycisk>
+<div id="login" class="box">
+    <input id="loginInput" placeholder="Login">
+    <input id="passwordInput" type="password" placeholder="Hasło">
+    <button onclick="login()">Zaloguj</button>
 </div>
 
 <!-- PANEL PRACOWNIKA -->
-<div id="pracownik"klasa="skrzynka">
+<div id="pracownik" class="box">
     <h2>Pracownik</h2>
     <h3 id="nazwaPracownika"></h3>
-    <div klasa="menu">
-        <div klasa="produkty">
-            <div klasa="produkt"nazwa-danych="Duży Kebab Rollo"cena danych="35">
-                🌯<br><B>Duży Kebab Rollo</B><br>35 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('duzy_rollo', -1)">➖</przycisk>
-                <przęsło id="duzy_rollo">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('duzy_rollo', 1)">➕</przycisk>
+    <div class="menu">
+        <div class="produkty">
+            <div class="produkt" data-name="Duży Kebab Rollo" data-price="35">
+                🌯<br><b>Duży Kebab Rollo</b><br>35 zł<br><br>
+                <button onclick="zmienIlosc('duzy_rollo', -1)">➖</button>
+                <span id="duzy_rollo">0</span>
+                <button onclick="zmienIlosc('duzy_rollo', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Mały Kebab Rollo"cena danych="28">
-                🌯<br><B>Mały Kebab Rollo</B><br>28 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('maly_rollo', -1)">➖</przycisk>
-                <przęsło id="maly_rollo">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('maly_rollo', 1)">➕</przycisk>
+            <div class="produkt" data-name="Mały Kebab Rollo" data-price="28">
+                🌯<br><b>Mały Kebab Rollo</b><br>28 zł<br><br>
+                <button onclick="zmienIlosc('maly_rollo', -1)">➖</button>
+                <span id="maly_rollo">0</span>
+                <button onclick="zmienIlosc('maly_rollo', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Mały Kebab"cena danych="28">
-                🥙<br><B>Mały Kebab</B><br>28 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('maly_kebab', -1)">➖</przycisk>
-                <przęsło id="mały_kebab">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('maly_kebab', 1)">➕</przycisk>
+            <div class="produkt" data-name="Mały Kebab" data-price="28">
+                🥙<br><b>Mały Kebab</b><br>28 zł<br><br>
+                <button onclick="zmienIlosc('maly_kebab', -1)">➖</button>
+                <span id="maly_kebab">0</span>
+                <button onclick="zmienIlosc('maly_kebab', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Kebab z frytkami na talerzu"cena danych="36">
-                🍱<br><B>Kebab z frytkami</B><br>36 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('talerz', -1)">➖</przycisk>
-                <przęsło id="talerz">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('talerz', 1)">➕</przycisk>
+            <div class="produkt" data-name="Kebab z frytkami na talerzu" data-price="36">
+                🍱<br><b>Kebab z frytkami</b><br>36 zł<br><br>
+                <button onclick="zmienIlosc('talerz', -1)">➖</button>
+                <span id="talerz">0</span>
+                <button onclick="zmienIlosc('talerz', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Frytki"cena danych="15">
-                🍱<br><B>Frytki</B><br>15 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('frytki', -1)">➖</przycisk>
-                <przęsło id="frytki">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('frytki', 1)">➕</przycisk>
+            <div class="produkt" data-name="Frytki" data-price="15">
+                🍱<br><b>Frytki</b><br>15 zł<br><br>
+                <button onclick="zmienIlosc('frytki', -1)">➖</button>
+                <span id="frytki">0</span>
+                <button onclick="zmienIlosc('frytki', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Ajran"cena danych="13">
-                🥤<br><B>Ajran</B><br>13 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('Ayran', -1)">➖</przycisk>
-                <przęsło id="Ajran">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('Ayran', 1)">➕</przycisk>
+            <div class="produkt" data-name="Ayran" data-price="13">
+                🥤<br><b>Ayran</b><br>13 zł<br><br>
+                <button onclick="zmienIlosc('Ayran', -1)">➖</button>
+                <span id="Ayran">0</span>
+                <button onclick="zmienIlosc('Ayran', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Dowóz (Bytów, Dąbki, Udorpie)"cena danych="10">
-                🚗<br><B>Dowóz (Bytów, Dąbki, Udorpie)</B><br>10 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('dowoz1', -1)">➖</przycisk>
-                <przęsło id="dowoz1">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('dowoz1', 1)">➕</przycisk>
+            <div class="produkt" data-name="Dowóz (Bytów, Dąbki, Udorpie)" data-price="10">
+                🚗<br><b>Dowóz (Bytów, Dąbki, Udorpie)</b><br>10 zł<br><br>
+                <button onclick="zmienIlosc('dowoz1', -1)">➖</button>
+                <span id="dowoz1">0</span>
+                <button onclick="zmienIlosc('dowoz1', 1)">➕</button>
             </div>
-            <div klasa="produkt"nazwa-danych="Dowóz (Milanów)"cena danych="20">
-                🚗<br><B>Dowóz (Milanów)</B><br>20 zł<br><br>
-                <przycisk kliknięcie="zmienIlosc('dowoz2', -1)">➖</przycisk>
-                <przęsło id="dowoz2">0</przęsło>
-                <przycisk kliknięcie="zmienIlosc('dowoz2', 1)">➕</przycisk>
+            <div class="produkt" data-name="Dowóz (Milanów)" data-price="20">
+                🚗<br><b>Dowóz (Milanów)</b><br>20 zł<br><br>
+                <button onclick="zmienIlosc('dowoz2', -1)">➖</button>
+                <span id="dowoz2">0</span>
+                <button onclick="zmienIlosc('dowoz2', 1)">➕</button>
             </div>
         </div>
-        <etykieta><B>🎁 Rabat:</B></etykieta><br>
+        <label><b>🎁 Rabat:</b></label><br>
 
-<wybierać id="rabat"zmiana="policzSume()">
-    <opcja wartość="0">Brak rabatu</opcja>
-    <opcja wartość="20">🚒 PSP (-20%)</opcja>
-    <opcja wartość="10">🚑 KPP / PR / SD (-10%)</opcja>
-</wybierać>
+<select id="rabat" onchange="policzSume()">
+    <option value="0">Brak rabatu</option>
+    <option value="20">🚒 PSP (-20%)</option>
+    <option value="10">🚑 KPP / PR / SD (-10%)</option>
+</select>
 
 <br><br>
 
-<przycisk klasa="wystaw"kliknięcie="wystawParagon()">🧾 Wystaw paragon</przycisk>
+<button class="wystaw" onclick="wystawParagon()">🧾 Wystaw paragon</button>
 
 <h2 id="sumaKoszyka">💰 Razem: 0 zł</h2>
-        <przycisk kliknięcie="wyloguj()">Wyloguj</przycisk>
+        <button onclick="logout()">Wyloguj</button>
     </div>
 </div>
 
 <!-- PANEL ADMINA -->
-<div id="administrator"klasa="skrzynka">
+<div id="admin" class="box">
     <h2>Administrator</h2>
     <h3 id="statystyki"></h3>
-    <przycisk kliknięcie="pokazParagony('wszyscy')">Wszyscy</przycisk>
-    <przycisk kliknięcie="pokazParagony('Szefuncio')">Szefuncio</przycisk>
-    <przycisk kliknięcie="pokazParagony('Szczurek')">Szczurek</przycisk>
-    <przycisk kliknięcie="pokazParagony('Jacek')">Jacek</przycisk>
-    <przycisk kliknięcie="pokazParagony('Mati')">Mati</przycisk>
-    <przycisk kliknięcie="pokazParagony('Dominki Wiśniewski')">Dominiki Wiśniewski</przycisk>
-    <przycisk kliknięcie="pokazParagony('2')">2</przycisk>
-    <przycisk kliknięcie="pokazParagony('3')">3</przycisk>
-    <przycisk kliknięcie="pokazParagony('4')">4</przycisk>
-    <przycisk kliknięcie="pokazParagony('5')">5</przycisk>
-    <przycisk kliknięcie="pokazParagony('6')">6</przycisk>
-    <przycisk kliknięcie="pokazParagony('7')">7</przycisk>
-    <przycisk kliknięcie="pokazParagony('8')">8</przycisk>
-    <przycisk kliknięcie="pokazParagony('9')">9</przycisk>
-    <przycisk kliknięcie="pokazParagony('11')">11</przycisk>
-    <przycisk kliknięcie="pokazParagony('12')">12</przycisk>
-    <przycisk kliknięcie="pokazParagony('13')">13</przycisk>
-    <przycisk kliknięcie="pokazParagony('14')">14</przycisk>
-    <przycisk kliknięcie="pokazParagony('15')">15</przycisk>
-    <przycisk kliknięcie="pokazParagony('16')">16</przycisk>
-    <przycisk kliknięcie="pokazParagony('17')">17</przycisk>
-    <przycisk kliknięcie="pokazParagony('18')">18</przycisk>
-    <przycisk kliknięcie="pokazParagony('19')">19</przycisk>
-    <przycisk kliknięcie="pokazParagony('20')">20</przycisk>
+    <button onclick="pokazParagony('wszyscy')">Wszyscy</button>
+    <button onclick="pokazParagony('Szefuncio')">Szefuncio</button>
+    <button onclick="pokazParagony('Szczurek')">Szczurek</button>
+    <button onclick="pokazParagony('Jacek')">Jacek</button>
+    <button onclick="pokazParagony('Mati')">Mati</button>
+    <button onclick="pokazParagony('Dominki Wiśniewski')">Dominki Wiśniewski</button>
+    <button onclick="pokazParagony('2')">2</button>
+    <button onclick="pokazParagony('3')">3</button>
+    <button onclick="pokazParagony('4')">4</button>
+    <button onclick="pokazParagony('5')">5</button>
+    <button onclick="pokazParagony('6')">6</button>
+    <button onclick="pokazParagony('7')">7</button>
+    <button onclick="pokazParagony('8')">8</button>
+    <button onclick="pokazParagony('9')">9</button>
+    <button onclick="pokazParagony('11')">11</button>
+    <button onclick="pokazParagony('12')">12</button>
+    <button onclick="pokazParagony('13')">13</button>
+    <button onclick="pokazParagony('14')">14</button>
+    <button onclick="pokazParagony('15')">15</button>
+    <button onclick="pokazParagony('16')">16</button>
+    <button onclick="pokazParagony('17')">17</button>
+    <button onclick="pokazParagony('18')">18</button>
+    <button onclick="pokazParagony('19')">19</button>
+    <button onclick="pokazParagony('20')">20</button>
     <br><br>
-    <przycisk klasa="używać"kliknięcie="usunWszystkie()">Usuń wszystkie paragony</przycisk>
+    <button class="usun" onclick="usunWszystkie()">Usuń wszystkie paragony</button>
     <div id="listaParagonow"></div>
-    <przycisk kliknięcie="wyloguj()">Wyloguj</przycisk>
+    <button onclick="logout()">Wyloguj</button>
 </div>
 
-<scenariusz>
-pozwalać pracownik = [
-    { login:"szefuncio", haslo:"Tobardzoskomplikowane4321@", imie:"Szefuncio" },
-    { login:"szczurek", haslo:"Pojazduprzywilejowany321@", imie:"Szczurek" },
-    { login:"Jacek", haslo:"Dowódca@4321", imie:"Jacek" },
-    { login:"mati", haslo:"poprostumati@321", imie:"Mati" },
-    { login:"Dominki wiśniewski", haslo:"Drix54321@", imie:„Dominki Wiśniewski” },
-    { login:"22b", haslo:"B", imie:"2" },
-    { login:"33c", haslo:"C", imie:"3" },
-    { login:"44d", haslo:"D", imie:"4" },
-    { login:"55e", haslo:"MI", imie:"5" },
-    { login:"66f", haslo:"F", imie:"6" },
-    { login:"77g", haslo:"G", imie:"7" },
-    { login:„88 godzin”, haslo:"H", imie:"8" },
-    { login:"99i", haslo:"I", imie:"9" },
-    { login:"100j", haslo:"J", imie:"10" },
-    { login:„111 tys.”, haslo:"K", imie:"11" },
-    { login:"112l", haslo:"L", imie:"12" },
-    { login:"113m", haslo:"M", imie:"13" },
-    { login:„114n”, haslo:"N", imie:"14" },
-    { login:"115 stopni", haslo:"O", imie:"15" },
-    { login:„116p”, haslo:"P", imie:"16" },
-    { login:"117r", haslo:"R", imie:"17" },
-    { login:„118”, haslo:"S", imie:"18" },
-    { login:"119t", haslo:"T", imie:"19" },
-    { login:"120u", haslo:"U", imie:"20" }
+<script>
+let pracownicy = [
+    { login: "szefuncio", haslo: "Tobardzoskomplikowane4321@", imie: "Szefuncio" },
+    { login: "szczurek", haslo: "Pojazduprzywilejowany321@", imie: "Szczurek" },
+    { login: "jacek", haslo: "Dowódca@4321", imie: "Jacek" },
+    { login: "mati", haslo: "poprostumati@321", imie: "Mati" },
+    { login: "dominki wiśniewski", haslo: "Drix54321@", imie: "Dominki Wiśniewski" },
+    { login: "22b", haslo: "B", imie: "2" },
+    { login: "33c", haslo: "C", imie: "3" },
+    { login: "44d", haslo: "D", imie: "4" },
+    { login: "55e", haslo: "E", imie: "5" },
+    { login: "66f", haslo: "F", imie: "6" },
+    { login: "77g", haslo: "G", imie: "7" },
+    { login: "88h", haslo: "H", imie: "8" },
+    { login: "99i", haslo: "I", imie: "9" },
+    { login: "100j", haslo: "J", imie: "10" },
+    { login: "111k", haslo: "K", imie: "11" },
+    { login: "112l", haslo: "L", imie: "12" },
+    { login: "113m", haslo: "M", imie: "13" },
+    { login: "114n", haslo: "N", imie: "14" },
+    { login: "115o", haslo: "O", imie: "15" },
+    { login: "116p", haslo: "P", imie: "16" },
+    { login: "117r", haslo: "R", imie: "17" },
+    { login: "118s", haslo: "S", imie: "18" },
+    { login: "119t", haslo: "T", imie: "19" },
+    { login: "120u", haslo: "U", imie: "20" }
 ];
 
-pozwalać AKTUALNYPracownik = "";
+let aktualnyPracownik = "";
 
-funkcjonować login() {
-    pozwalać login = dokument.pobierzElementById(„dane wejściowe logowania”).wartość;
-    pozwalać haslo = dokument.pobierzElementById(„wprowadzanie hasła”).wartość;
+function login() {
+    let login = document.getElementById("loginInput").value;
+    let haslo = document.getElementById("passwordInput").value;
 
-    Jeśli (login == „administrator” && haslo == „admin123”) {
-        dokument.pobierzElementById("login").styl.wyświetlacz = "nic";
-        dokument.pobierzElementById(„administrator”).styl.wyświetlacz = "blok";
-        AKTUALNYPracownik = „Administrator”;
+    if (login == "admin" && haslo == "admin123") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("admin").style.display = "block";
+        aktualnyPracownik = "Admin";
         pokazParagony("wszyscy");
-        powrót;
+        return;
     }
 
-    pozwalać osoba = pracownik.znajdować(funkcjonować(P) {
-        powrót P.login == login.do małych liter() && P.haslo == haslo;
+    let osoba = pracownicy.find(function(p) {
+        return p.login == login.toLowerCase() && p.haslo == haslo;
     });
 
-    Jeśli (osoba) {
-        AKTUALNYPracownik = osoba.imie;
-        dokument.pobierzElementById("login").styl.wyświetlacz = "nic";
-        dokument.pobierzElementById("pracownik").styl.wyświetlacz = "blok";
-        dokument.pobierzElementById("nazwaPracownika").innerHTML = "Witaj" + AKTUALNYPracownik;
+    if (osoba) {
+        aktualnyPracownik = osoba.imie;
+        document.getElementById("login").style.display = "none";
+        document.getElementById("pracownik").style.display = "block";
+        document.getElementById("nazwaPracownika").innerHTML = "Witaj " + aktualnyPracownik;
         resetFormularza();
-    } w przeciwnym razie {
-        alarm("Błędny login lub hasło");
+    } else {
+        alert("Błędny login lub hasło");
     }
 }
 
-funkcjonować wyloguj się() {
-    dokument.pobierzElementById("pracownik").styl.wyświetlacz = "nic";
-    dokument.pobierzElementById(„administrator”).styl.wyświetlacz = "nic";
-    dokument.pobierzElementById("login").styl.wyświetlacz = "blok";
-    dokument.pobierzElementById(„dane wejściowe logowania”).wartość = "";
-    dokument.pobierzElementById(„wprowadzanie hasła”).wartość = "";
+function logout() {
+    document.getElementById("pracownik").style.display = "none";
+    document.getElementById("admin").style.display = "none";
+    document.getElementById("login").style.display = "block";
+    document.getElementById("loginInput").value = "";
+    document.getElementById("passwordInput").value = "";
 }
 
-funkcjonować zmienIlosc(id, zmiana) {
+function zmienIlosc(id, zmiana) {
 
-    pozwalać Polak = dokument.pobierzElementById(id);
-    pozwalać ilość = Numer(Polak.tekst wewnętrzny);
+    let pole = document.getElementById(id);
+    let ilosc = Number(pole.innerText);
 
-    ilość += zmiana;
+    ilosc += zmiana;
 
-    Jeśli (ilość < 0) {
-        ilość = 0;
+    if (ilosc < 0) {
+        ilosc = 0;
     }
 
-    Polak.tekst wewnętrzny = ilość;
+    pole.innerText = ilosc;
 
     policzSume();
 }
-funkcjonować policzSume() {
+function policzSume() {
 
-    pozwalać suma = 0;
+    let suma = 0;
 
-    dokument.querySelectorAll(„.produkt”).dla każdego(funkcjonować(el) {
+    document.querySelectorAll(".produkt").forEach(function(el) {
 
-        pozwalać ilość = Numer(el.selektor zapytań("przęsło").tekst wewnętrzny);
-        pozwalać cena = Numer(el.zbiór danych.cena);
+        let ilosc = Number(el.querySelector("span").innerText);
+        let cena = Number(el.dataset.price);
 
-        suma += ilość * cena;
+        suma += ilosc * cena;
 
     });
 
-    pozwalać rabat = Numer(dokument.pobierzElementById("rabat").wartość);
+    let rabat = Number(document.getElementById("rabat").value);
 
-    pozwalać doZaplaty = suma - (suma * rabat / 100);
+    let doZaplaty = suma - (suma * rabat / 100);
 
-    dokument.pobierzElementById("sumaKoszyka").innerHTML =
+    document.getElementById("sumaKoszyka").innerHTML =
         "💰 Razem: <s>" + suma + " zł</s><br>" +
         "🎁 Rabat: " + rabat + "%<br>" +
-        "✅ Do zapłaty: " + doZaplaty.doNaprawiono(2) + zł;
+        "✅ Do zapłaty: " + doZaplaty.toFixed(2) + " zł";
 }
-funkcjonować resetFormularza() {
+function resetFormularza() {
 
-    pozwalać elementy = dokument.querySelectorAll(„.produkt span”);
+    let elementy = document.querySelectorAll(".produkt span");
 
-    elementy.dla każdego(funkcjonować(przęsło) {
-        przęsło.tekst wewnętrzny = "0";
+    elementy.forEach(function(span) {
+        span.innerText = "0";
     });
 
-    // Zresetuj rabatu do "Brak rabatu"
-    dokument.pobierzElementById("rabat").wartość = "0";
+    // Reset rabatu do "Brak rabatu"
+    document.getElementById("rabat").value = "0";
 
     policzSume();
 }
 
-funkcjonować wystawParagon() {
-    pozwalać produkty = [];
-    pozwalać suma = 0;
-    pozwalać rabat = Numer(dokument.pobierzElementById("rabat").wartość);
-    pozwalać elementy = dokument.querySelectorAll(„.produkt”);
+function wystawParagon() {
+    let produkty = [];
+    let suma = 0;
+    let rabat = Number(document.getElementById("rabat").value);
+    let elementy = document.querySelectorAll(".produkt");
 
-    elementy.dla każdego(funkcjonować(el) {
-        pozwalać spanId = el.selektor zapytań("przęsło").id;
-        pozwalać ilość = Numer(dokument.pobierzElementById(spanId).tekst wewnętrzny);
+    elementy.forEach(function(el) {
+        let spanId = el.querySelector("span").id;
+        let ilosc = Number(document.getElementById(spanId).innerText);
         
-        Jeśli (ilość > 0) {
-            pozwalać nazwa = el.pobierzAtrybut(„nazwa-danych”);
-            pozwalać cena = Numer(el.pobierzAtrybut(„cena danych”));
-            produkty.naciskać(nazwa + " X" + ilość);
-            suma += ilość * cena;
+        if (ilosc > 0) {
+            let nazwa = el.getAttribute("data-name");
+            let cena = Number(el.getAttribute("data-price"));
+            produkty.push(nazwa + " x" + ilosc);
+            suma += ilosc * cena;
         }
     });
 
-    pozwalać doZaplaty = suma - (suma * rabat / 100);
-    Jeśli (produkty.długość == 0) {
-        alarm(„Wybierz jeden produkt”);
-        powrót;
+    let doZaplaty = suma - (suma * rabat / 100);
+    if (produkty.length == 0) {
+        alert("Wybierz przynajmniej jeden produkt");
+        return;
     }
 
-pozwalać nowyParagon = {
-    pracownik:AKTUALNYPracownik,
-    dane:nowy Data().("pl-PL"),
-    produkty:produkty.dołączyć(", "),
-    cenaPrzedRabatem:suma,
-    rabat:rabat,
-    cena:doZaplaty
+let nowyParagon = {
+    pracownik: aktualnyPracownik,
+    data: new Date().toLocaleString("pl-PL"),
+    produkty: produkty.join(", "),
+    cenaPrzedRabatem: suma,
+    rabat: rabat,
+    cena: doZaplaty
 };
 
-    pozwalać lista = JSON.analizować(lokalne przechowywanie.pobierzPrzedmiot("paragonia")) || [];
-    lista.naciskać(nowyParagon);
-    lokalne przechowywanie.ustaw element("paragonia", JSON.stringify(lista));
+    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
+    lista.push(nowyParagon);
+    localStorage.setItem("paragony", JSON.stringify(lista));
     
-    alarm("Paragon wystawiony!\nDo zapłaty: " + doZaplaty.doNaprawiono(2) + zł);
+    alert("Paragon wystawiony!\nDo zapłaty: " + doZaplaty.toFixed(2) + " zł");
     resetFormularza();
 }
 
-funkcjonować pokazParagony(filtr) {
+function pokazParagony(filtr) {
 
-    pozwalać lista = JSON.analizować(lokalne przechowywanie.pobierzPrzedmiot("paragonia")) || [];
-    pozwalać listaKontener = dokument.pobierzElementById("listaParagonow");
-    pozwalać statystykiKontener = dokument.pobierzElementById("statystyki");
+    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
+    let listaKontener = document.getElementById("listaParagonow");
+    let statystykiKontener = document.getElementById("statystyki");
 
     listaKontener.innerHTML = "";
 
-    pozwalać przefiltrowanaLista = lista
-        .mapa((P, I) => ({...P, indeks:I }))
-        .filtr(P => filtr === "wszyscy" || P.pracownik === filtr);
+    let przefiltrowanaLista = lista
+        .map((p, i) => ({ ...p, indeks: i }))
+        .filter(p => filtr === "wszyscy" || p.pracownik === filtr);
 
-    pozwalać lacznyUtarg = 0;
-pozwalać zarobki = {};
+    let lacznyUtarg = 0;
+let zarobki = {};
 
-    przefiltrowanaLista.dla każdego(funkcjonować(P) {
+    przefiltrowanaLista.forEach(function(p) {
 
-        lacznyUtarg += P.cena;
-Jeśli (!zarobki[P.pracownik]) {
-    zarobki[P.pracownik] = 0;
+        lacznyUtarg += p.cena;
+if (!zarobki[p.pracownik]) {
+    zarobki[p.pracownik] = 0;
 }
 
-zarobki[P.pracownik] += P.cena;
+zarobki[p.pracownik] += p.cena;
 
-        pozwalać div = dokument.utwórzElement("diw");
-        div.NazwaKlasy = "wzór doskonałości";
+        let div = document.createElement("div");
+        div.className = "paragon";
 
 div.innerHTML =
-    "🧑‍🍳<b>Pracownik:</b> " + P.pracownik + "<br>" +
-    "📆<b>Dane:</b> " + P.dane + "<br>" +
-    "🍽️<b>Produkty:</b> " + P.produkty + "<br>" +
-    "💰<b>Cena przed rabatem:</b> " + (P.cenaPrzedRabatem ?? P.cena) + " zł<br>" +
-    "🎁<b>Rabat:</b> " + (P.rabat || 0) + "%<br>" +
-    "💸<b>Do zapłaty:</b> " + P.cena + " zł<br><br>" +
-    "<button class='usun' onclick='usunParagon(" + P.indeks + ")'>🗑 Usuń paragon</button>";
+    "🧑‍🍳<b>Pracownik:</b> " + p.pracownik + "<br>" +
+    "📆<b>Data:</b> " + p.data + "<br>" +
+    "🍽️<b>Produkty:</b> " + p.produkty + "<br>" +
+    "💰<b>Cena przed rabatem:</b> " + (p.cenaPrzedRabatem ?? p.cena) + " zł<br>" +
+    "🎁<b>Rabat:</b> " + (p.rabat || 0) + "%<br>" +
+    "💸<b>Do zapłaty:</b> " + p.cena + " zł<br><br>" +
+    "<button class='usun' onclick='usunParagon(" + p.indeks + ")'>🗑 Usuń paragon</button>";
 
         listaKontener.appendChild(div);
     });
 
-    pozwalać tekstZarobki = "";
+    let tekstZarobki = "";
 
-Do (pozwalać osoba W zarobki) {
-    tekstZarobki += "👤" + osoba + ": " + zarobki[osoba] + " zł<br>";
+for (let osoba in zarobki) {
+    tekstZarobki += "👤 " + osoba + ": " + zarobki[osoba] + " zł<br>";
 }
 
 statystykiKontener.innerHTML =
     "💰 Utarg: " + lacznyUtarg + " zł<br>" +
-    "🧾 Zamówień: " + przefiltrowanaLista.długość +
+    "🧾 Zamówień: " + przefiltrowanaLista.length +
     "<br><br>" +
     "📊 Zarobki pracowników:<br>" +
     tekstZarobki;
 
 }
 
-funkcjonować usunWszystkie() {
-    Jeśli (potwierdzać(„Czy na pewno chcesz oczyścić całą historię paragonów?”)) {
-        lokalne przechowywanie.usuń element("paragonia");
+function usunWszystkie() {
+    if (confirm("Czy na pewno chcesz usunąć całą historię paragonów?")) {
+        localStorage.removeItem("paragony");
         pokazParagony("wszyscy");
     }
 }
 
-funkcjonować usunParagon(indeks) {
-    Jeśli (!potwierdzać("Usunąć ten paragon?")) powrót;
+function usunParagon(index) {
+    if (!confirm("Usunąć ten paragon?")) return;
 
-    pozwalać lista = JSON.analizować(lokalne przechowywanie.pobierzPrzedmiot("paragonia")) || [];
+    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
 
-    lista.splatać(indeks, 1);
+    lista.splice(index, 1);
 
-    lokalne przechowywanie.ustaw element("paragonia", JSON.stringify(lista));
+    localStorage.setItem("paragony", JSON.stringify(lista));
 
     pokazParagony("wszyscy");
 }
-</scenariusz>
+</script>
 
-</ciało>
+</body>
 </html>
