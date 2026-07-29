@@ -206,7 +206,58 @@ button:hover {
         <button onclick="logout()">Wyloguj</button>
     </div>
 </div>
-    
+
+    <button class="usun" onclick="usunWszystkie()">Usuń wszystkie paragony</button>
+    <div id="listaParagonow"></div>
+    <button onclick="logout()">Wyloguj</button>
+</div>
+
+<script>
+let pracownicy = [
+    { login: "szefuncio", haslo: "Tobardzoskomplikowane4321@", imie: "Szefuncio" },
+    { login: "szczurek", haslo: "Pojazduprzywilejowany321@", imie: "Szczurek" },
+    { login: "jacek", haslo: "Dowódca@4321", imie: "Jacek" },
+    { login: "mati", haslo: "poprostumati@321", imie: "Mati" },
+    { login: "dominki wiśniewski", haslo: "Drix54321@", imie: "Dominki Wiśniewski" },
+    { login: "22b", haslo: "B", imie: "2" },
+    { login: "33c", haslo: "C", imie: "3" },
+    { login: "44d", haslo: "D", imie: "4" },
+    { login: "55e", haslo: "E", imie: "5" },
+    { login: "66f", haslo: "F", imie: "6" },
+    { login: "77g", haslo: "G", imie: "7" },
+    { login: "88h", haslo: "H", imie: "8" },
+    { login: "99i", haslo: "I", imie: "9" },
+    { login: "100j", haslo: "J", imie: "10" },
+    { login: "111k", haslo: "K", imie: "11" },
+    { login: "112l", haslo: "L", imie: "12" },
+    { login: "113m", haslo: "M", imie: "13" },
+    { login: "114n", haslo: "N", imie: "14" },
+    { login: "115o", haslo: "O", imie: "15" },
+    { login: "116p", haslo: "P", imie: "16" },
+    { login: "117r", haslo: "R", imie: "17" },
+    { login: "118s", haslo: "S", imie: "18" },
+    { login: "119t", haslo: "T", imie: "19" },
+    { login: "120u", haslo: "U", imie: "20" }
+];
+
+let aktualnyPracownik = "";
+
+function login() {
+    let login = document.getElementById("loginInput").value;
+    let haslo = document.getElementById("passwordInput").value;
+
+    if (login == "admin" && haslo == "admin123") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("admin").style.display = "block";
+        aktualnyPracownik = "Admin";
+        pokazParagony("wszyscy");
+        return;
+    }
+
+    let osoba = pracownicy.find(function(p) {
+        return p.login == login.toLowerCase() && p.haslo == haslo;
+    });
+
     if (osoba) {
         aktualnyPracownik = osoba.imie;
         document.getElementById("login").style.display = "none";
@@ -370,6 +421,25 @@ statystykiKontener.innerHTML =
     "📊 Zarobki pracowników:<br>" +
     tekstZarobki;
 
+}
+
+function usunWszystkie() {
+    if (confirm("Czy na pewno chcesz usunąć całą historię paragonów?")) {
+        localStorage.removeItem("paragony");
+        pokazParagony("wszyscy");
+    }
+}
+
+function usunParagon(index) {
+    if (!confirm("Usunąć ten paragon?")) return;
+
+    let lista = JSON.parse(localStorage.getItem("paragony")) || [];
+
+    lista.splice(index, 1);
+
+    localStorage.setItem("paragony", JSON.stringify(lista));
+
+    pokazParagony("wszyscy");
 }
 </script>
 
