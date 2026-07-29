@@ -16,7 +16,28 @@ body {
     text-align:center;
 }
 
+#podsumowanie{
 
+    background:white;
+    color:black;
+
+    width:80%;
+    max-width:600px;
+
+    margin:25px auto;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    font-size:20px;
+
+    text-align:left;
+
+    box-shadow:0 3px 10px black;
+
+}
+    
 .topbar {
     background:#ffc400;
     color:#111;
@@ -290,20 +311,50 @@ function zmienIlosc(id, zmiana){
 function policzSume(){
 
     let suma = 0;
+    let lista = "";
+
 
     document.querySelectorAll(".produkt").forEach(function(el){
 
         let ilosc = Number(el.querySelector("span").innerText);
         let cena = Number(el.dataset.price);
 
-        suma += ilosc * cena;
+
+        if(ilosc > 0){
+
+            suma += ilosc * cena;
+
+            lista += 
+            "🍽️ " + el.dataset.name +
+            " x" + ilosc +
+            " — " +
+            (ilosc*cena).toFixed(2) +
+            " zł<br>";
+
+        }
 
     });
 
 
+
+    if(lista==""){
+        lista="Brak produktów";
+    }
+
+
+
+    document.getElementById("podsumowanie").innerHTML =
+
+    "<b>🍽️ Twoje zamówienie:</b><br><br>" +
+    lista;
+
+
+
     let rabat = Number(document.getElementById("rabat").value);
 
-    let cenaPoRabacie = suma - (suma * rabat / 100);
+
+    let cenaPoRabacie = suma - (suma*rabat/100);
+
 
 
     document.getElementById("sumaKoszyka").innerHTML =
@@ -565,6 +616,11 @@ function wystawParagon(){
 💰 Razem: 0 zł
 </h2>
 
+<div id="podsumowanie" class="paragon">
+<b>🍽️ Twoje zamówienie:</b>
+<br>
+Brak produktów
+</div>
 
 <button class="wystaw" onclick="wystawParagon()">
 🧾 Wyślij paragon
