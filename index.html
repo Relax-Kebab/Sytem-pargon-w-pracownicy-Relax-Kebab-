@@ -135,6 +135,13 @@ button:hover {
     <p>Tuchomie • ul. Mickiewicza 1</p>
 </div>
 
+<!-- PANEL LOGOWANIA -->
+<div id="login" class="box">
+    <input id="loginInput" placeholder="Login">
+    <input id="passwordInput" type="password" placeholder="Hasło">
+    <button onclick="login()">Zaloguj</button>
+</div>
+
 <!-- PANEL PRACOWNIKA -->
 <div id="pracownik" class="box">
     <h2>Pracownik</h2>
@@ -207,6 +214,35 @@ button:hover {
     </div>
 </div>
 
+<!-- PANEL ADMINA -->
+<div id="admin" class="box">
+    <h2>Administrator</h2>
+    <h3 id="statystyki"></h3>
+    <button onclick="pokazParagony('wszyscy')">Wszyscy</button>
+    <button onclick="pokazParagony('Szefuncio')">Szefuncio</button>
+    <button onclick="pokazParagony('Szczurek')">Szczurek</button>
+    <button onclick="pokazParagony('Jacek')">Jacek</button>
+    <button onclick="pokazParagony('Mati')">Mati</button>
+    <button onclick="pokazParagony('Dominki Wiśniewski')">Dominki Wiśniewski</button>
+    <button onclick="pokazParagony('2')">2</button>
+    <button onclick="pokazParagony('3')">3</button>
+    <button onclick="pokazParagony('4')">4</button>
+    <button onclick="pokazParagony('5')">5</button>
+    <button onclick="pokazParagony('6')">6</button>
+    <button onclick="pokazParagony('7')">7</button>
+    <button onclick="pokazParagony('8')">8</button>
+    <button onclick="pokazParagony('9')">9</button>
+    <button onclick="pokazParagony('11')">11</button>
+    <button onclick="pokazParagony('12')">12</button>
+    <button onclick="pokazParagony('13')">13</button>
+    <button onclick="pokazParagony('14')">14</button>
+    <button onclick="pokazParagony('15')">15</button>
+    <button onclick="pokazParagony('16')">16</button>
+    <button onclick="pokazParagony('17')">17</button>
+    <button onclick="pokazParagony('18')">18</button>
+    <button onclick="pokazParagony('19')">19</button>
+    <button onclick="pokazParagony('20')">20</button>
+    <br><br>
     <button class="usun" onclick="usunWszystkie()">Usuń wszystkie paragony</button>
     <div id="listaParagonow"></div>
     <button onclick="logout()">Wyloguj</button>
