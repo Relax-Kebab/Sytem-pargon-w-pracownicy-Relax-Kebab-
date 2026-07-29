@@ -115,6 +115,7 @@ select{
 }
 
 #podsumowanie,
+#paragon,
 .paragon{
     background:#fff;
     color:#111;
@@ -145,7 +146,9 @@ select{
     policzSume();
 }
 
-ffunction policzSume(){
+function policzSume(){
+
+    alert("Działa");
 
     let suma = 0;
     let lista = "";
@@ -189,12 +192,18 @@ ffunction policzSume(){
     let cenaPoRabacie = suma - kwotaRabatu;
 
 
-    document.getElementById("sumaKoszyka").innerHTML =
-        "💰 Cena: " + suma.toFixed(2) + " zł<br>" +
-        "🎁 Rabat: " + rabat + "% (" + kwotaRabatu.toFixed(2) + " zł)<br>" +
-        "✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł";
-}
+    let wynik = document.getElementById("sumaKoszyka");
 
+if(wynik){
+
+    wynik.innerHTML = 
+    `
+    💰 Cena: ${suma.toFixed(2)} zł<br>
+    🎁 Rabat: ${rabat}%<br>
+    ✅ Do zapłaty: ${cenaPoRabacie.toFixed(2)} zł
+    `;
+
+}
     if(lista == ""){
         lista = "Brak produktów";
     }
