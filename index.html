@@ -613,9 +613,11 @@ function wystawParagon(){
 
 
 <h2 id="sumaKoszyka">
-💰 Razem: 0 zł
+💰 Cena: 0.00 zł<br>
+🎁 Rabat: 0%<br>
+✅ Do zapłaty: 0.00 zł
 </h2>
-
+    
 <div id="podsumowanie" class="paragon">
 <b>🍽️ Twoje zamówienie:</b>
 <br>
@@ -628,7 +630,10 @@ Brak produktów
 
 
 <div id="paragon"></div>
-
+    
+window.onload = function () {
+    policzSume();
+};
 
 </div>
 </div>  
