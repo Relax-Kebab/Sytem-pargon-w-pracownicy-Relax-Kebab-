@@ -282,21 +282,28 @@ function wystawParagon(){
 
     let poRabacie = suma - (suma * rabat / 100);
 
+    let minus20 = poRabacie * 0.20;
+    
     document.getElementById("paragon").innerHTML = `
-    <div class="paragon">
-        <h3>🌯 RELAX KEBAB</h3>
+<div class="paragon">
+    <h3>🌯 RELAX KEBAB</h3>
 
-        ${produkty}
+    ${produkty}
 
-        <hr>
+    <hr>
 
-        💰 Przed rabatem: ${suma.toFixed(2)} zł<br>
-        🎁 Rabat: ${rabat}%<br>
-        ✅ Do zapłaty: ${poRabacie.toFixed(2)} zł<br><br>
+    💰 Przed rabatem: ${suma.toFixed(2)} zł<br>
+    🎁 Rabat: ${rabat}%<br>
+    ✅ Do zapłaty: ${poRabacie.toFixed(2)} zł<br>
 
-        📅 ${new Date().toLocaleString("pl-PL")}
-    </div>
-    `;
+    <hr>
+
+    ➖ 20%: ${minus20.toFixed(2)} zł
+
+    <br><br>
+    📅 ${new Date().toLocaleString("pl-PL")}
+</div>
+`;
 
     document.querySelectorAll(".produkt span").forEach(function(e){
         e.innerText = "0";
