@@ -239,17 +239,13 @@ function policzSume(){
 
     let cenaPoRabacie = suma - (suma * rabat / 100);
 
-// dodatkowe -20% od kwoty do zapłaty
-let minus20 = cenaPoRabacie * 0.20;
-let poMinus20 = cenaPoRabacie - minus20;
-
 document.getElementById("sumaKoszyka").innerHTML =
 "<span style='color:#111;'>💰 Cena: " + suma.toFixed(2) + " zł</span><br>" +
 "<span style='color:#111;'>🎁 Rabat: " + rabat + "%</span><br>" +
-"<span style='color:#111;'>✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł</span><br>" +
-"<span style='color:#0a8f08;font-size:26px;'>➖ Dodatkowe -20%: " + poMinus20.toFixed(2) + " zł</span>";
+"<span style='color:#111;'>✅ Do zapłaty: " + cenaPoRabacie.toFixed(2) + " zł</span>";
+    
 }
-
+    
 function wystawParagon(){
 
     let produkty = "";
